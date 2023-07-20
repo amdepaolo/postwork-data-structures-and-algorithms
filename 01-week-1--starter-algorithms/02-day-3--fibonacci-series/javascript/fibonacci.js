@@ -8,7 +8,7 @@ function fibonacci(num) {
 }
 
 function recursiveFib(num) {
-  if (num < 1){
+  if (num <= 1){
     return num }
   else{
     return recursiveFib(num - 1) + recursiveFib ( num - 2)
