@@ -1,53 +1,87 @@
-function findFirstDuplicate(arr) {
-  // type your code here
-  let firstDupKey = arr.length;
-  for (let i = 0; i < arr.length; i ++){
-    for (let j = i+1; j < arr.length; j ++){
-      if (arr[i] === arr[j]){
-        if(j < firstDupKey){
-          firstDupKey = j
-        }
-      }
-    }
+function fibonacci(num) {
+  const fibArr = [0,1]
+  for (let i=2; i<= num; i++){
+    let nextNum = fibArr[fibArr.length - 1] + fibArr[fibArr.length - 2];
+    fibArr.push(nextNum);
   }
-  if(firstDupKey === arr.length){
-    return -1
+ return fibArr[num]
+}
+
+function recursiveFib(num) {
+  if (num < 1){
+    return num }
+  else{
+    return recursiveFib(num - 1) + recursiveFib ( num - 2)
   }
-  else return arr[firstDupKey]
+
 }
 
 if (require.main === module) {
   // add your own tests in here
-  console.log("Expecting: 3");
-  console.log("=>", findFirstDuplicate([2, 1, 3, 3, 2]));
+  console.log("Expecting: 0");
+  console.log("=>", fibonacci(0));
 
   console.log("");
 
-  console.log("Expecting: -1");
-  console.log("=>", findFirstDuplicate([1, 2, 3, 4]));
-
-  console.log("");
-
-  console.log("Expecting: 5");
-  console.log("=>", findFirstDuplicate([1, 2, 3, 4, 5, 5]));
+  console.log("Expecting: 1");
+  console.log("=>", fibonacci(2));
 
   console.log("");
 
   console.log("Expecting: 2");
-  console.log("=>", findFirstDuplicate([1, 2, 3, 4, 2, 5, 5]));
+  console.log("=>", fibonacci(3));
+
+  console.log("");
+
+  console.log("Expecting: 5");
+  console.log("=>", fibonacci(5));
+
+  console.log("");
+
+  console.log("Expecting: 8");
+  console.log("=>", fibonacci(6));
+
+  console.log("");
+
+  console.log("Expecting: 89");
+  console.log("=>", fibonacci(11));
+
+  console.log("");
+
+  console.log("Recursive Test Expecting: 2")
+  console.log("=>", recursiveFib(3))
+
+  console.log("");
+
+  console.log("Recursive Test Expecting: 8")
+  console.log("=>", recursiveFib(6))
+
+  console.log("");
+
+  console.log("Recursive Test Expecting: 89")
+  console.log("=>", recursiveFib(11))
+
+  console.log("");
+
+  console.log("Ref Fib arg: 23")
+  console.log("=>", fibonacci(23))  
+
+  console.log("");
+
+  console.log("Recursive Fob arg: 23")
+  console.log("=>", recursiveFib(23))
 }
 
-module.exports = findFirstDuplicate;
+module.exports = fibonacci;
 
+// Please add your pseudocode to this file
+// function fibonaccit(number in sequence)
+  // let fibonacci array = [0,1]
+  // for (i = 0; i less than or equal to number; i++)
+    // find next number by adding last number of array to second to last array.
+    // push number to end of array
+  // after for loop completes, return last number of array
 
-// declare firstDuplicate key as array length 
-// itirate numbers in array starting at [0]
-  // compare current number to rest of numbers of array
-    //  if numbers match, 
-        // if key is lower than firstDuplicate key 
-          // later number key = firstDuplicate key
-// if firstDuplicate key still = array length
-    // return -1
-// else return array[firstDuplicatekey]
+// And a written explanation of your solution
 
-// This is probably not the most efficient solution, but It will first set a value for the key of the firstDuplicate. It will then go through the array, and for each number it will compare it to the rest of the array, if it finds a match it will than see if the key of the match is lower than the current firstDuplicate key value, if so then make that the new value for firstDuplicate. Once the iteration completes, If the firstDuplicateKey value is still the array length, then return -1, otherwise return the array value at the first duplicate key
+// We should have code that continues the fibonacci sequence for the number of times we ask it to. So we should put a for loop in the function that uses the argument as the place to stop. We should declare two numbers as variables using let so that they can be redefined as the last two digits of the sequence
